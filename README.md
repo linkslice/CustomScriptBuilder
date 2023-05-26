@@ -3,7 +3,7 @@ A framework for creating simple ZenPacks that just need to add custom scripts.
 
 Step 1> clone the repo<br>
 Step 2> cd to the CustomScriptBuilder directory<br>
-step 3> add your script to the libexec directory<br>
+step 3> add your script(s) to the libexec directory<br>
 step 4> run the makepack.sh with -a AUTHOR -v VERSION and -n NAME flags<br>
 
 

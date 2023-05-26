@@ -11,5 +11,5 @@ Your new ZenPack egg will be found in the pwd next to the makepack.sh script
 Scripts can then be added to a command datasource and called like so
 <pre>/bin/env ${here/ZenPackManager/packs/ZenPacks.NAME.CustomScripts/path}/libexec/SCRIPT-NAME.sh</pre>
 
-Author is the only flag that can contain spaces and should be 'QUOTED'
+Author is the only flag that can contain spaces and should be 'QUOTED'<br>
 ***This is a work in progress watch for falling rocks***

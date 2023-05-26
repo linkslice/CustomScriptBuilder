@@ -21,7 +21,6 @@ while getopts 'a:n:v:h' flag; do
 
 done
 
-echo $author
 newroot='ZenPacks.'$name'.CustomScripts'
 if test -d $newroot ; then rm -rf $newroot ; fi
 cp -r skel/ZenPacks.example.CustomScripts $newroot

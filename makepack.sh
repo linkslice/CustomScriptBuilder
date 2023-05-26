@@ -5,16 +5,18 @@ name=''
 version=''
 
 print_usage() {
-  printf "Usage: ..."
+  printf "Usage: ./makepack.sh -a <AUTHOR> -n <Company/Packname> -v <VERSION>\n"
 }
 
-while getopts 'a:n:v:' flag; do
+while getopts 'a:n:v:h' flag; do
   case "${flag}" in
     a) author="${OPTARG}" ;;
     n) name="${OPTARG}" ;;
     v) version="${OPTARG}" ;;
+    h) print_usage
+       exit 1 ;;
     *) print_usage
-#       exit 1 ;;
+       exit 1 ;;
   esac
 
 done

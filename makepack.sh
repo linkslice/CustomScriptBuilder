@@ -39,3 +39,4 @@ sed -i 's/VERSION\ =.*/VERSION\ =\ "'$version'"/' setup.py
 python setup.py build bdist_egg >/dev/null 2>&1
 
 cp dist/*.egg ../
+cd .. ; ls -1 *.egg

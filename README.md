@@ -2,8 +2,9 @@
 A framework for creating simple ZenPacks that just need to add custom scripts.
 
 Step 1> clone the repo<br>
-step 2> add your script to the libexec directory<br>
-step 3> cd to the CustomScriptBuilder directory and run the makepack.sh with -a AUTHOR -v VERSION and -n NAME flags<br>
+Step 2> cd to the CustomScriptBuilder directory<br>
+step 3> add your script to the libexec directory<br>
+step 4> run the makepack.sh with -a AUTHOR -v VERSION and -n NAME flags<br>
 
 
 Your new ZenPack egg will be found in the pwd next to the makepack.sh script

@@ -22,7 +22,7 @@ while getopts 'a:n:v:hp' flag; do
 
 done
 # see if we're in Docker
-if [ `pwd` == '/' ] ;
+if [ `pwd` == '/' ] ; then
   cd CustomScriptBuilder
 fi
 

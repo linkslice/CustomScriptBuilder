@@ -13,6 +13,7 @@ while getopts 'a:n:v:h' flag; do
     a) author="${OPTARG}" ;;
     n) name="${OPTARG}" ;;
     v) version="${OPTARG}" ;;
+    p) plugins=true ;;
     h) print_usage
        exit 1 ;;
     *) print_usage
@@ -20,13 +21,28 @@ while getopts 'a:n:v:h' flag; do
   esac
 
 done
+# see if we're in Docker
+if [ `pwd` == '/' ] ;
+  cd CustomScriptBuilder
+fi
+
+if [ $plugins = true ] ; then
+  yum install nrpe nagios-plugins-http -y
+  cp /usr/lib64/nagios/plugins/check_* libexec
+fi
 
 newroot='ZenPacks.'$name'.CustomScripts'
 if test -d $newroot ; then rm -rf $newroot ; fi
 cp -r skel/ZenPacks.example.CustomScripts $newroot
 #mv $(find . -mindepth 1 -maxdepth 1 -type d -path . -prune -o -name 'ZenPacks.*')  $newroot
 mv $(find ZenPacks.$name.CustomScripts/ZenPacks/ -mindepth 1 -maxdepth 1 -type d) ZenPacks.$name.CustomScripts/ZenPacks/$name
-cp libexec/* $newroot/ZenPacks/$name/CustomScripts/libexec/
+
+if test -d /mnt/pwd/libexec ; then
+  cp /mnt/pwd/libexec/* libexec
+else
+  cp libexec/* $newroot/ZenPacks/$name/CustomScripts/libexec/
+fi
+
 chmod +x $newroot/ZenPacks/$name/CustomScripts/libexec/*
 
 #exit 
@@ -39,4 +55,5 @@ sed -i 's/VERSION\ =.*/VERSION\ =\ "'$version'"/' setup.py
 python setup.py build bdist_egg >/dev/null 2>&1
 
 cp dist/*.egg ../
+if test -d /mnt/pwd ; then cp *.egg /mnt/pwd/ ; fi
 cd .. ; ls -1 *.egg

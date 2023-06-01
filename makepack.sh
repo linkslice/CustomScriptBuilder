@@ -55,5 +55,6 @@ sed -i 's/VERSION\ =.*/VERSION\ =\ "'$version'"/' setup.py
 python setup.py build bdist_egg >/dev/null 2>&1
 
 cp dist/*.egg ../
-if test -d /mnt/pwd ; then cp *.egg /mnt/pwd/ ; fi
 cd .. ; ls -1 *.egg
+if test -d /mnt/pwd ; then cp *.egg /mnt/pwd/ ; fi
+

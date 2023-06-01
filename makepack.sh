@@ -3,6 +3,7 @@
 author=''
 name=''
 version=''
+plugins=false
 
 print_usage() {
   printf "Usage: ./makepack.sh -a <AUTHOR> -n <Company/Packname> -v <VERSION>\n"

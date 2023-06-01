@@ -27,19 +27,21 @@ if [ `pwd` == '/' ] ; then
   cd CustomScriptBuilder
 fi
 
-if [ $plugins = true ] ; then
-  yum install nrpe nagios-plugins-http -y
-  cp /usr/lib64/nagios/plugins/check_* libexec
-fi
-
 newroot='ZenPacks.'$name'.CustomScripts'
 if test -d $newroot ; then rm -rf $newroot ; fi
+
+if [ $plugins = true ] ; then
+  yum install nrpe nagios-plugins-http -y
+  cp /usr/lib64/nagios/plugins/check_* $newroot/ZenPacks/$name/CustomScripts/libexec/
+fi
+
+
 cp -r skel/ZenPacks.example.CustomScripts $newroot
 #mv $(find . -mindepth 1 -maxdepth 1 -type d -path . -prune -o -name 'ZenPacks.*')  $newroot
 mv $(find ZenPacks.$name.CustomScripts/ZenPacks/ -mindepth 1 -maxdepth 1 -type d) ZenPacks.$name.CustomScripts/ZenPacks/$name
 
 if test -d /mnt/pwd/libexec ; then
-  cp /mnt/pwd/libexec/* libexec
+  cp /mnt/pwd/libexec/* $newroot/ZenPacks/$name/CustomScripts/libexec/
 else
   cp libexec/* $newroot/ZenPacks/$name/CustomScripts/libexec/
 fi

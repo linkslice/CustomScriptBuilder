@@ -35,7 +35,7 @@ cp -r skel/ZenPacks.example.CustomScripts $newroot
 mv $(find ZenPacks.$name.CustomScripts/ZenPacks/ -mindepth 1 -maxdepth 1 -type d) ZenPacks.$name.CustomScripts/ZenPacks/$name
 
 if [ $plugins = true ] ; then
-  yum install nrpe nagios-plugins-http -y
+  yum install nrpe nagios-plugins-http nagios-plugins-dig -y
   cp /usr/lib64/nagios/plugins/check_* $newroot/ZenPacks/$name/CustomScripts/libexec/
 fi
 

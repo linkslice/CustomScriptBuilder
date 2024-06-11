@@ -38,12 +38,14 @@ if [ $plugins = true ] ; then
   if test -f /usr/bin/yum ; then
     yum install nrpe nagios-plugins-http nagios-plugins-dig -y
     cp /usr/lib64/nagios/plugins/check_* $newroot/ZenPacks/$name/CustomScripts/libexec/
+  fi
   if test -f /usr/bin/apt ; then
     apt update 
     export DEBIAN_FRONTEND=noninteractive
     export TZ=Etc/UTC 
     apt install -y monitoring-plugins-standard nagios-nrpe-plugin
     cp /usr/lib/nagios/plugins/check_* $newroot/ZenPacks/$name/CustomScripts/libexec/
+  fi
 fi
 
 if test -d /mnt/pwd/libexec ; then

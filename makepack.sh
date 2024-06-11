@@ -35,8 +35,15 @@ cp -r skel/ZenPacks.example.CustomScripts $newroot
 mv $(find ZenPacks.$name.CustomScripts/ZenPacks/ -mindepth 1 -maxdepth 1 -type d) ZenPacks.$name.CustomScripts/ZenPacks/$name
 
 if [ $plugins = true ] ; then
-  yum install nrpe nagios-plugins-http nagios-plugins-dig -y
-  cp /usr/lib64/nagios/plugins/check_* $newroot/ZenPacks/$name/CustomScripts/libexec/
+  if test -f /usr/bin/yum ; then
+    yum install nrpe nagios-plugins-http nagios-plugins-dig -y
+    cp /usr/lib64/nagios/plugins/check_* $newroot/ZenPacks/$name/CustomScripts/libexec/
+  if test -f /usr/bin/apt ; then
+    apt update 
+    export DEBIAN_FRONTEND=noninteractive
+    export TZ=Etc/UTC 
+    apt install -y monitoring-plugins-standard nagios-nrpe-plugin
+    cp /usr/lib/nagios/plugins/check_* $newroot/ZenPacks/$name/CustomScripts/libexec/
 fi
 
 if test -d /mnt/pwd/libexec ; then

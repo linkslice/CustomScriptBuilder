@@ -15,6 +15,7 @@ while getopts 'a:n:v:hp' flag; do
     n) name="${OPTARG}" ;;
     v) version="${OPTARG}" ;;
     p) plugins=true ;;
+    s) symlinks=true ;; 
     h) print_usage
        exit 1 ;;
     *) print_usage
@@ -34,7 +35,7 @@ cp -r skel/ZenPacks.example.CustomScripts $newroot
 #mv $(find . -mindepth 1 -maxdepth 1 -type d -path . -prune -o -name 'ZenPacks.*')  $newroot
 mv $(find ZenPacks.$name.CustomScripts/ZenPacks/ -mindepth 1 -maxdepth 1 -type d) ZenPacks.$name.CustomScripts/ZenPacks/$name
 
-if [ $plugins = true ] ; then
+if [ $plugins == true ] ; then
   if test -f /usr/bin/yum ; then
     yum install nrpe nagios-plugins-http nagios-plugins-dig -y
     cp /usr/lib64/nagios/plugins/check_* $newroot/ZenPacks/$name/CustomScripts/libexec/
@@ -57,6 +58,10 @@ fi
 chmod +x $newroot/ZenPacks/$name/CustomScripts/libexec/*
 
 #exit 
+
+if [ $symlinks == true ] ; then
+  cp skel/symlink/__init__.py $newroot/ZenPacks/$name/CustomScripts/
+fi
 
 cd $newroot
 sed -i 's/AUTHOR\ =.*/AUTHOR\ =\ '"'$author'"'/' setup.py

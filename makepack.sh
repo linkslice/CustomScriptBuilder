@@ -51,13 +51,13 @@ fi
 
 if test -d /mnt/pwd/libexec ; then
   cp /mnt/pwd/libexec/* $newroot/ZenPacks/$name/CustomScripts/libexec/
-else
+fi
+if test -d libexec ; then
   cp libexec/* $newroot/ZenPacks/$name/CustomScripts/libexec/
 fi
 
 chmod +x $newroot/ZenPacks/$name/CustomScripts/libexec/*
 
-#exit 
 
 if [ $symlinks == true ] ; then
   cp skel/symlink/__init__.py $newroot/ZenPacks/$name/CustomScripts/

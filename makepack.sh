@@ -9,7 +9,7 @@ print_usage() {
   printf "Usage: ./makepack.sh -a <AUTHOR> -n <Company/Packname> -v <VERSION>\n"
 }
 
-while getopts 'a:n:v:hp' flag; do
+while getopts 'a:n:v:hps' flag; do
   case "${flag}" in
     a) author="${OPTARG}" ;;
     n) name="${OPTARG}" ;;

@@ -14,7 +14,7 @@ from Products.ZenUtils.Utils import zenPath
 #unused(Globals)
 
 _plugins = os.listdir('libexec')
-_plugins = [item for item in plugins if '__init__.py' not in item]
+_plugins = [item for item in _plugins if '__init__.py' not in item]
 
 class ZenPack(ZenPackBase):
 

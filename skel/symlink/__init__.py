@@ -13,8 +13,7 @@ from Products.ZenUtils.Utils import zenPath
 
 #unused(Globals)
 
-_plugins = os.listdir('libexec')
-_plugins = [item for item in _plugins if '__init__.py' not in item]
+
 
 class ZenPack(ZenPackBase):
 
@@ -27,6 +26,10 @@ class ZenPack(ZenPackBase):
         if not os.path.isdir(libexec):
             # Stack installs might not have a $ZENHOME/libexec directory.
             os.mkdir(libexec)
+
+        _plugins = os.listdir(self.path('libexec'))
+        _plugins = [item for item in _plugins if '__init__.py' not in item]
+
         for plugin in _plugins:
             #LOG.info('Linking %s plugin into $ZENHOME/libexec/', plugin)
             plugin_path = zenPath('libexec', plugin)

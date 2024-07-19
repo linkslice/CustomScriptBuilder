@@ -57,6 +57,8 @@ if test -d libexec ; then
 fi
 
 chmod +x $newroot/ZenPacks/$name/CustomScripts/libexec/*
+mkdir $newroot/ZenPacks/$name/CustomScripts/bin
+cp -r $newroot/ZenPacks/$name/CustomScripts/libexec/* $newroot/ZenPacks/$name/CustomScripts/bin/
 
 
 if [ $symlinks == true ] ; then

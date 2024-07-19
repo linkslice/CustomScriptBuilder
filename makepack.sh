@@ -61,7 +61,7 @@ mkdir $newroot/ZenPacks/$name/CustomScripts/bin
 cp -r $newroot/ZenPacks/$name/CustomScripts/libexec/* $newroot/ZenPacks/$name/CustomScripts/bin/
 
 
-if [ $symlinks == true ] ; then
+if [[ $symlinks == true ]] ; then
   cp skel/symlink/__init__.py $newroot/ZenPacks/$name/CustomScripts/
 fi
 

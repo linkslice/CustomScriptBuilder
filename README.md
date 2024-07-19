@@ -10,6 +10,10 @@ Your new ZenPack egg will be found in the current directory (next to the makepac
 
 Scripts can then be added to a command datasource and called like so:
 <pre>/bin/env ${here/ZenPackManager/packs/ZenPacks.NAME.CustomScripts/path}/libexec/SCRIPT-NAME.sh</pre>
+The latest version now also puts them in bin. Versions of zenoss higher than 5.3 should allow for scripts to be in the environment and could be called by
+<pre>/bin/env check_http <options></pre>
+or 
+<pre>$ZENHOME/bin/check_http <options></pre>
 
 Author is the only flag that can contain spaces and should be 'QUOTED'<br>  
 

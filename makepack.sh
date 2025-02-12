@@ -60,6 +60,11 @@ chmod +x $newroot/ZenPacks/$name/CustomScripts/libexec/*
 mkdir $newroot/ZenPacks/$name/CustomScripts/bin
 cp -r $newroot/ZenPacks/$name/CustomScripts/libexec/* $newroot/ZenPacks/$name/CustomScripts/bin/
 
+#test if we're in zenpacklab
+if test -d /usr/src/zenpacklab-storage/libexec/ ; then
+  cp /usr/src/zenpacklab-storage/libexec/* $newroot/ZenPacks/$name/CustomScripts/libexec/
+fi
+
 
 if [[ $symlinks == true ]] ; then
   cp skel/symlink/__init__.py $newroot/ZenPacks/$name/CustomScripts/

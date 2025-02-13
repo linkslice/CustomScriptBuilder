@@ -63,6 +63,7 @@ cp -r $newroot/ZenPacks/$name/CustomScripts/libexec/* $newroot/ZenPacks/$name/Cu
 #test if we're in zenpacklab
 if test -d /usr/src/zenpacklab-storage/libexec/ ; then
   cp /usr/src/zenpacklab-storage/libexec/* $newroot/ZenPacks/$name/CustomScripts/libexec/
+  cp /usr/src/zenpacklab-storage/libexec/* $newroot/ZenPacks/$name/CustomScripts/bin/
 fi
 
 
